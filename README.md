@@ -29,3 +29,7 @@ every 1 second.
 ## Trigger balance update
 
 To update balance run `curl -d '{"balance":1000}' -H "Content-Type: application/json" -X POST http://localhost:3333/api/balance`
+
+## Demo
+
+![Alt Text](https://github.com/alfamegaxq/value-interpolation/blob/main/rec.gif)
