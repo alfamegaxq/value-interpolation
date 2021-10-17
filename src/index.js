@@ -3,9 +3,8 @@ const app = express()
 const http = require('http')
 const server = http.createServer(app)
 const mysql = require('mysql')
-const {getInterpolatedBalance} = require("./balanceService");
+const {getInterpolatedValue, updateValue} = require("./valueService");
 const {initSockets} = require("./sockets");
-const {updateBalance} = require("./balanceService");
 
 const db = mysql.createConnection({
     host: 'mysql',
@@ -24,14 +23,14 @@ app.get('/odometer.js', (req, res) => {
     res.contentType(file).sendFile(file)
 })
 
-// Get initial balance
-app.get('/api/balance', (req, res) => {
-    getInterpolatedBalance(db, (balance) => res.send(`${balance}`))
+// Get initial value
+app.get('/api/value', (req, res) => {
+    getInterpolatedValue(db, (value) => res.send(`${value}`))
 });
 
-// Update balance
-app.post('/api/balance', (req, res) => {
-    updateBalance(db, req.body.balance)
+// Update value
+app.post('/api/value', (req, res) => {
+    updateValue(db, req.body.value)
     res.send('ok')
 })
 
@@ -39,4 +38,4 @@ server.listen(3333, () => {
     console.log('listening on 0.0.0.0:3333')
 });
 
-initSockets(server, db, getInterpolatedBalance)
+initSockets(server, db, getInterpolatedValue)

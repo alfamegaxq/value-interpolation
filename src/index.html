@@ -87,18 +87,18 @@
     <title>example</title>
 </head>
 <body>
-<div>Balance: <span class="odometer js-balance">Loading...</span></div>
+<div>Value: <span class="odometer js-value">Loading...</span></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.1/socket.io.js" integrity="sha512-Y5MDU6RaF5h5HE5BgqJlKkV12kbkbIgWHutcT+XHHNOUzr+HHjWZGC02sqEguuPglmFms3cc08WH2PhQ5rF8Cw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="/odometer.js"></script>
 <script>
-    fetch('http://0.0.0.0:3333/api/balance')
+    fetch('http://0.0.0.0:3333/api/value')
         .then(response => response.json())
         .then((data) => {
-            document.querySelector('.js-balance').innerHTML = parseFloat(data).toFixed(2)
+            document.querySelector('.js-value').innerHTML = parseFloat(data).toFixed(2)
             const socket = io()
 
-            socket.on('balance', (msg) => {
-                document.querySelector('.js-balance').innerHTML = parseFloat(msg.balance).toFixed(2)
+            socket.on('value', (msg) => {
+                document.querySelector('.js-value').innerHTML = parseFloat(msg.value).toFixed(2)
             });
         });
 </script>

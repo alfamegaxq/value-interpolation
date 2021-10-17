@@ -1,5 +1,4 @@
-const {Server} = require("socket.io");
-exports.initSockets = (server, db, getInterpolatedBalance) => {
+exports.initSockets = (server, db, getInterpolatedValue) => {
     const {Server} = require("socket.io");
     const io = new Server(server);
 
@@ -10,8 +9,8 @@ exports.initSockets = (server, db, getInterpolatedBalance) => {
     });
 
     setInterval(() => {
-        getInterpolatedBalance(db, (balance) => {
-            io.emit('balance', {balance});
+        getInterpolatedValue(db, (value) => {
+            io.emit('value', {value});
         })
     }, EMIT_INTERVAL);
 }

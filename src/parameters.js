@@ -1,6 +1,6 @@
-// 5 min. The duration of how long we will be lagging balance
+// 5 min. The duration of how long we will be lagging value
 const INTERPOLATION_INTERVAL_MS = 300000
-// How many times int the interval we will be updating the current balance
+// How many times int the interval we will be updating the current value
 const INTERPOLATION_INTERVAL_COUNT = 300
 const MS_IN_INTERPOLATION_INTERVAL = INTERPOLATION_INTERVAL_MS / INTERPOLATION_INTERVAL_COUNT
 
