@@ -29,3 +29,7 @@ every 1 second.
 ## Trigger value update
 
 To update value run `curl -d '{"value":1000}' -H "Content-Type: application/json" -X POST http://localhost:3333/api/value`
+
+## Demo
+
+![Alt Text](https://github.com/alfamegaxq/value-interpolation/blob/main/rec.gif)
